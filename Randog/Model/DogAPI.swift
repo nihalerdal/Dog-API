@@ -34,5 +34,22 @@ class DogAPI{
         task.resume()
     }
     
- 
+    
+    class func requestRandomImage(completionHandler: @escaping (DogImage?, Error?) -> Void ){
+        
+        let randomImageEndpoint = DogAPI.Endpoint.randomImageFromAllDogsCollection.url
+               
+        let task = URLSession.shared.dataTask(with: randomImageEndpoint) { (data, response, error) in
+            guard let data = data else {return}
+//            if it's not successful
+            completionHandler(nil, error)
+           
+            let decoder = JSONDecoder()
+            let imageData = try! decoder.decode(DogImage.self, from: data)
+            print(imageData)
+//            if it's successfull
+            completionHandler(imageData, nil)
+        }
+        task.resume()
+    }
 }

@@ -17,26 +17,23 @@ class ViewController: UIViewController {
         
         //GET
         
-        let randomImageEndpoint = DogAPI.Endpoint.randomImageFromAllDogsCollection.url
+//        let randomImageEndpoint = DogAPI.Endpoint.randomImageFromAllDogsCollection.url
         
-        let task = URLSession.shared.dataTask(with: randomImageEndpoint) { (data, response, error) in
-            guard let data = data else {return}
+//        let task = URLSession.shared.dataTask(with: randomImageEndpoint) { (data, response, error) in
+//            guard let data = data else {return}
             
             
             //           2.parsing via codable
             
-            let decoder = JSONDecoder()
-            let imageData = try! decoder.decode(DogImage.self, from: data)
-            print(imageData)
+//            let decoder = JSONDecoder()
+//            let imageData = try! decoder.decode(DogImage.self, from: data)
+//            print(imageData)
             
             // parsing burada bitti tum key-value lari aldim. simdi ilk requestin outputlariyla yeni req olusturcam. fotolari getirebilmek icin tekrar data task.
-            
-            guard let imageURL =  URL(string: imageData.message) else {return}
-            
-            DogAPI.requestImageFile(url: imageURL, completionHandler: self.handleImageResponse(image:error:))
-            
-        }
-        task.resume()
+        
+        DogAPI.requestRandomImage(completionHandler: handleRandomImageResponse(imageData:error:))
+    }
+//        task.resume()
          
         //          1.parsing via JSON Serialization
         
@@ -49,13 +46,20 @@ class ViewController: UIViewController {
         //            }
         
         
-    }
     
-    func handleImageResponse(image: UIImage?, error: Error?){
+    
+    func handleImageFileResponse(image: UIImage?, error: Error?){
         DispatchQueue.main.async {
             self.imageView.image = image
         }
     }
+
+    func handleRandomImageResponse(imageData: DogImage?, error: Error?){
+        guard let imageUrl = URL(string: imageData?.message ?? "" ) else {return}
+        
+        DogAPI.requestImageFile(url: imageUrl, completionHandler: handleImageFileResponse(image:error:))
+    }
+
 }
 
 
