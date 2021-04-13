@@ -11,9 +11,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    let breeds : [String] = ["greyhount","poodle"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         //GET
         
@@ -30,8 +36,7 @@ class ViewController: UIViewController {
 //            print(imageData)
             
             // parsing burada bitti tum key-value lari aldim. simdi ilk requestin outputlariyla yeni req olusturcam. fotolari getirebilmek icin tekrar data task.
-        
-        DogAPI.requestRandomImage(completionHandler: handleRandomImageResponse(imageData:error:))
+    
     }
 //        task.resume()
          
@@ -60,6 +65,26 @@ class ViewController: UIViewController {
         DogAPI.requestImageFile(url: imageUrl, completionHandler: handleImageFileResponse(image:error:))
     }
 
+   
 }
 
+extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        breeds.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return breeds[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        DogAPI.requestRandomImage(completionHandler: handleRandomImageResponse(imageData:error:))
+    }
+}
 
