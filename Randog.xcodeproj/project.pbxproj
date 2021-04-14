@@ -15,6 +15,7 @@
 		952DEF7726168A5C002ABA32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952DEF7526168A5C002ABA32 /* LaunchScreen.storyboard */; };
 		952DEF8426168CFA002ABA32 /* DogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952DEF8326168CFA002ABA32 /* DogAPI.swift */; };
 		952DEF892616A7B0002ABA32 /* DogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952DEF882616A7B0002ABA32 /* DogImage.swift */; };
+		952DEF9126266FF3002ABA32 /* BreedsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952DEF9026266FF3002ABA32 /* BreedsListResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		952DEF7826168A5C002ABA32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		952DEF8326168CFA002ABA32 /* DogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogAPI.swift; sourceTree = "<group>"; };
 		952DEF882616A7B0002ABA32 /* DogImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImage.swift; sourceTree = "<group>"; };
+		952DEF9026266FF3002ABA32 /* BreedsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				952DEF8326168CFA002ABA32 /* DogAPI.swift */,
 				952DEF882616A7B0002ABA32 /* DogImage.swift */,
+				952DEF9026266FF3002ABA32 /* BreedsListResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				952DEF6F26168A50002ABA32 /* ViewController.swift in Sources */,
 				952DEF892616A7B0002ABA32 /* DogImage.swift in Sources */,
 				952DEF6B26168A50002ABA32 /* AppDelegate.swift in Sources */,
+				952DEF9126266FF3002ABA32 /* BreedsListResponse.swift in Sources */,
 				952DEF6D26168A50002ABA32 /* SceneDelegate.swift in Sources */,
 				952DEF8426168CFA002ABA32 /* DogAPI.swift in Sources */,
 			);

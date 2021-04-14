@@ -13,13 +13,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var pickerView: UIPickerView!
     
-    let breeds : [String] = ["greyhount","poodle"]
+    var breeds : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        
+        DogAPI.requestBreedList(completionHandler: handleBreedListResponse(breeds:error:))
         
         //GET
         
@@ -63,6 +65,13 @@ class ViewController: UIViewController {
         guard let imageUrl = URL(string: imageData?.message ?? "" ) else {return}
         
         DogAPI.requestImageFile(url: imageUrl, completionHandler: handleImageFileResponse(image:error:))
+    }
+    
+    func handleBreedListResponse(breeds: [String], error: Error?){
+        self.breeds = breeds
+        DispatchQueue.main.async {
+            self.pickerView.reloadAllComponents()
+        }
     }
 
    
